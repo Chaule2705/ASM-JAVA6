@@ -1,0 +1,8 @@
+<div xmlns:th="http://www.thymeleaf.org">
+	<th:block th:fragment="item_id(id)">
+		<button th:attr="ng-click=@{|cart.add(${id})|}" class="btn btn-success" style="color: white;background-color: black;">
+				<i class="glyphicon glyphicon-shopping-cart"></i>
+		</button>
+		
+	</th:block>
+</div>

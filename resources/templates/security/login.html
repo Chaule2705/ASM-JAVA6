@@ -1,0 +1,30 @@
+<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic (~{::main})}">
+<main>
+	<form action="/security/login" method="post" class="col-sm-8 col-sm-offset-2">
+		<div class="panel panel-danger" style="border: 2px solid black;">
+			<div class="panel-heading"style="font-variant: small-caps;background-color: #DD0000;font-family:cursive;color: white;">SHOPPING CART LOGIN</div>
+			<div class="panel-body">
+					<div class="form-group">
+						<div><b>Username:</b></div>
+						<input name="username" class="form-control">
+					</div>
+					<div class="form-group">
+						<div><b>Password:</b></div>
+						<input name="password" type="password" class="form-control">
+					</div>
+					<div class="form-group">
+						<div class="form-control ">
+							<label class="checkbox-inline">
+								<input type="checkbox" name=remember-me> <b>Remember me?</b> 
+							</label>
+						</div>
+					</div>
+			</div>
+			<div class="panel-footer text-right">
+				<i class="pull-left text-danger" th:text="${message}"></i>
+				<button class="btn btn-success"style="font-variant: small-caps;background-color:black;font-family:cursive;color: white;">Login</button>
+			</div>
+		</div>
+	</form>
+</main>
+</div>

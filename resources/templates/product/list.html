@@ -1,0 +1,40 @@
+<div xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index :: dynamic (~{::main})}">
+	<main>
+
+
+		<div class="row">
+			<div>
+				<div class="col-sm-4" th:replace="~{/layout/_category}"></div>
+				<div class="col-sm-4" th:replace="~{/layout/_cart-info}"></div>
+			</div>
+
+			<div class="container-fluid">
+				<div th:each="p: ${items}" class="col-sm-4">
+					<div class="panel panel-primary poly-item text-center"
+						style="border: 1px solid black;">
+
+						<div class="panel-body">
+							<a th:href="@{|/product/detail/${p.id}|}"> <img
+								th:src="@{|/assets/images/${p.image}|}">
+							</a>
+						</div>
+
+					</div>
+
+					<div class="panel-heading">
+						<b class="panel-title" th:utext="${p.name}"></b>
+					</div>
+					<div class="panel-footer text-right"
+						style="background-color: white; border: 1px solid window;">
+						<b class="pull-left">$[[${p.price}]]</b>
+						<p th:replace="~{/product/_actions::item_id(${p.id})}">
+					</div>
+					<!-- <br>
+						<br> -->
+				</div>
+			</div>
+
+		</div>
+	</main>
+</div>
