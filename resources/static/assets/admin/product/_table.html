@@ -1,0 +1,55 @@
+<div class="panel panel-default" ng-if="items">
+	<div class="panel-heading">PRODUCT LIST</div>
+	<table class="table table-condensed">
+		<thead class="bg-success" style="font-variant: small-caps; background-color: black;color: white;">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Date</th>
+				<th>Image</th>
+				<th>Category</th>
+				<th>Available?</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in pager.items">
+				<td>{{item.id}}</td>
+				<td>{{item.name}}</td>
+				<td>{{item.price | number : 2}}</td>
+				<td>{{item.createDate | date : 'dd-MM-yyyy'}}</td>
+				<td>{{item.image}}</td>
+				<td>{{item.category.name}}</td>
+				<td>{{item.available?'Yes':'No'}}</td>
+				<td>
+					<div class="btn-group btn-group-xs">
+						<a ng-click="edit(item)" href="" class="btn" style="background-color: #DD0000;color: white;">
+							<b class="glyphicon glyphicon-edit"></b>
+						</a>
+						<a ng-click="delete(item)" href="" class="btn" style="background-color: black;color: white;">
+							<b class="glyphicon glyphicon-trash"></b>
+						</a>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="panel-footer text-center">
+		<button ng-click="pager.first()" class="btn " style="background-color: black;color: white;">
+			<<
+		</button>
+		<button ng-click="pager.prev()" class="btn " style="background-color: #DD0000;color: white;">
+			<
+		</button>
+		<button class="btn " style="background-color: black;color: white;">
+			{{pager.page + 1}} of {{pager.count}}
+		</button>
+		<button ng-click="pager.next()" class="btn " style="background-color: #DD0000;color: white;">
+			>
+		</button>
+		<button ng-click="pager.last()" class="btn " style="background-color: black;color: white;">
+			>>
+		</button>
+	</div>
+  </div>

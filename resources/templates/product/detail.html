@@ -1,0 +1,46 @@
+<div xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index :: dynamic (~{::main})}">
+	<!-- Sử dụng th:object để giữ info sp từ index qua detail khi ta click vào -->
+	<main th:object="${item}" class="poly-item-detail">
+		<div class="row">
+			<div class="panel panel-danger" style="border: 1px solid #fff;">
+				<div class="panel-body text-center">
+					<img th:src="@{|/assets/images/*{image}|}">
+				</div>
+			</div>
+			<div class="panel panel-danger" style="border: 1px solid #fff;">
+				<div class="panel-body">
+					<ul style="color: black;">
+						<li style="list-style: none;" th:text="*{name}"></li>
+						<li style="list-style: none;" th:text="*{price}"></li>
+						<li style="list-style: none;" th:text="*{createDate}"></li>
+						<li style="list-style: none;" th:text="*{category.name}"></li>
+					</ul>
+				</div>
+				<div class="panel-footer text-right">
+					<p th:replace="~{/product/_actions::item_id(${item.id})}" />
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="panel panel-danger">
+				<div class="panel-heading"
+					style="font-variant: small-caps; background-color: #DD0000; font-family: cursive; color: white;">HÀNG
+					CÙNG LOẠI</div>
+				<div class="panel-body">
+					<!-- Sử dụng th:each để tạo vòng lặp các sp cùng loại -->
+					<div class="row">
+						<div class="col-sm" th:each="p:*{category.products}">
+							<figure class="col-sm-3 block-4-image">
+								<a th:href="@{|/product/detail/${p.id}|}"> <img
+									class="img-thumbnail" alt="Image placeholder"
+									th:src="@{|/assets/images/${p.image}|}">
+								</a>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</div>

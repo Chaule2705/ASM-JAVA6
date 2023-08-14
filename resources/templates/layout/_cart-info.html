@@ -1,0 +1,9 @@
+<div xmlns:th="http://www.thymeleaf.org">
+	<div class="panel panel-primary" 
+	style="border: 2px solid black;width: 115px;">
+		<div class="panel-body" >
+			<i style="font-size: 25px; color:#DD0000;" class="glyphicon glyphicon-shopping-cart"></i>
+			<a th:href="@{/cart/view}" style="font-variant: small-caps;color: #DD0000;font-size: 20px;">{{cart.count}} </a>
+		</div>
+	</div>
+</div>

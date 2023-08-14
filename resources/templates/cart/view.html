@@ -1,0 +1,48 @@
+<div xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{/layout/index :: dynamic (~{::main})}">
+	<main>
+		<div class="panel panel-primary" th:fragment="cart_frag" style="border: 2px solid black;">
+			<div class="panel-heading" style="font-variant: small-caps;background-color: #DD0000;font-family:cursive;color: white;">SHOPPING CART</div>
+			<div ng-if="!cart.items.length" class="panel-body text-center">
+				<h3 style="font-variant: small-caps;">No items in your shopping cart</h3>
+			</div>
+			<table ng-if="cart.items.length" class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>Amount</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in cart.items">
+						<td>{{item.id}}</td>
+						<td>{{item.name}}</td>
+						<td>${{item.price | number : 2}}</td>
+						<td><input ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1" style="width:60px;"/></td>
+						<td>${{cart.amt_of(item) | number : 2}}</td>
+						<td>
+						<!--REMOVE XÓA MẶT HÀNG KHỎI GIỎ  -->
+							<button ng-click="cart.remove(item.id)" class="btn btn-sm" style="background-color: black;color: white;">
+								<i class="glyphicon glyphicon-trash"></i>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div ng-if="cart.items.length" class="panel-footer">
+			<!-- CLEAR LÀ XÓA SP -->
+				<button ng-click="cart.clear()" class="btn " style="background-color: black; font-family: cursive;color: white;">
+					 Clear
+				</button>
+				<!-- CHECKOUT SẼ DẪN ĐẾN DG DẪN KHÁC -->
+				<a th:href="@{/order/checkout}" class="btn " style="background-color: black; font-family: cursive;color: white;">
+					 Buy
+				</a>
+			</div>
+		</div>
+	</main>
+</div>

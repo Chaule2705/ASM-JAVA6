@@ -1,0 +1,17 @@
+
+<div xmlns:th="http://www.thymeleaf.org">
+<div class="dropdown">
+	<button class="btn btn-primary dropdown-toggle" type="button"
+		data-toggle="dropdown" style="background-color:black ;font-family: cursive;">
+		DANH MỤC <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu">
+		<th:block th:each="c:${cates}">
+			<a th:href="@{|/product/list?cid=${c.id}|}" class="list-group-item"
+				style="color: black;"> <b class="	glyphicon glyphicon-tint"></b>
+				<span th:text="${c.name}"></span>
+			</a>
+		</th:block>
+	</ul>
+</div>
+</div>
